@@ -1,0 +1,60 @@
+*{
+    box-sizing: border-box;
+}
+body {
+    background-color: darkorange;
+}
+img{
+    width: 100%;
+}
+p-5{
+    padding: 5px;
+}
+row {
+    clear: left;
+}
+
+/* css hp : max-widt : 600px */
+@media screen and (max-width : 600px) {
+    body {
+        background-color: blue;
+    }
+    
+}
+/* css tablet : max-width : 601px */
+@media screen and (min-width : 601px) {
+    body {
+        background-color: red;
+    }
+    .col-md-50{
+    width: 50%;
+    float: left;
+}
+.col-md-100{
+    width: 100%;
+    float: left;
+}
+    
+}
+/* css dekstop : max-width : 993px */
+@media screen and (min-width : 992px) {
+    body {
+        background-color: navy;
+        color: aqua;
+    }
+    /* class selector */
+.col-lg-25{
+    width: 25%;
+    float: left;
+}
+.col-lg-50{
+    width: 50%;
+    float: left;
+}
+.col-lg-75{
+    width: 75%;
+    float: left;
+}
+    
+}
+
