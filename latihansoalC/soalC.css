@@ -1,0 +1,89 @@
+body{
+font-family: Arial;
+margin:0;
+background:#5fa1df;
+color:rgb(243, 14, 205);
+}
+
+
+nav{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px 40px;
+background:#03ff81;
+}
+
+nav ul{
+display:flex;
+list-style:none;
+gap:20px;
+}
+
+/* Hero */
+.hero img{
+width:100%;
+height:400px;
+object-fit:cover;
+}
+
+/* Deskripsi */
+.deskripsi{
+text-align:center;
+padding:30px;
+}
+
+/* Card */
+.card-container{
+display:flex;
+justify-content:center;
+gap:20px;
+padding:20px;
+}
+
+.card{
+background:white;
+color:black;
+border-radius:10px;
+overflow:hidden;
+width:200px;
+text-align:center;
+}
+
+.card img{
+width:100%;
+}
+
+/* Video + Form */
+.content{
+display:flex;
+gap:30px;
+padding:30px;
+}
+
+.video{
+flex:1;
+}
+
+.form{
+flex:1;
+display:flex;
+flex-direction:column;
+gap:10px;
+}
+
+.form input,
+.form textarea{
+padding:10px;
+border:none;
+border-radius:5px;
+}
+
+button{
+padding:10px;
+background:#1fb6ff;
+border:none;
+color:white;
+border-radius:5px;
+cursor:pointer;
+}
