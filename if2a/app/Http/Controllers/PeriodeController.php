@@ -2,21 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\fakultas;
+use App\Models\Periode;
 use Illuminate\Http\Request;
 
-class FakultasController extends Controller
+class PeriodeController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //akses tabel fakultas
-        $result =Fakultas::all(); // select * from fakultas
-       // dd($result); // dump data
-       return view('fakultas.index' , compact('result'));
-
+        $periodes = Periode::all();
+        return view('periodes.index', compact('periodes'));
     }
 
     /**
@@ -38,7 +35,7 @@ class FakultasController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(fakultas $fakultas)
+    public function show(Periode $periode)
     {
         //
     }
@@ -46,7 +43,7 @@ class FakultasController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(fakultas $fakultas)
+    public function edit(Periode $periode)
     {
         //
     }
@@ -54,7 +51,7 @@ class FakultasController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, fakultas $fakultas)
+    public function update(Request $request, Periode $periode)
     {
         //
     }
@@ -62,7 +59,7 @@ class FakultasController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(fakultas $fakultas)
+    public function destroy(Periode $periode)
     {
         //
     }

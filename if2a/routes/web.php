@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\FakultasController;
+use App\Http\Controllers\PeriodeController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -7,6 +9,13 @@ Route::get('/', function () {
 });
 
 Route ::get('/tentang', function (){
-    return view (' tentang ');
+    return view(' tentang ');
 });
 
+Route ::get('/about', function (){
+    return view(' tentang ');
+});
+
+
+Route::resource('/fakultas', FakultasController::class);
+Route::resource('/periodes', PeriodeController::class);
