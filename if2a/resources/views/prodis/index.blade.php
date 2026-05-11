@@ -3,9 +3,6 @@
 
 @section('content')
     
-
-
-
 <h1>Data Prodi</h1>
 
 

@@ -24,16 +24,26 @@ class FakultasController extends Controller
      */
     public function create()
     {
-        //
+        return view('fakultas.create');
     }
-
+        
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
     {
-        //
-    }
+       // dd($request->all());    
+        //validasi input
+        $input = $request->validate([
+            'nama_fakultas' => 'required|string|max:255',
+            'singkatan' => 'required|string|max:10',
+        ]);
+        //simpan ke tabel fakultas
+        fakultas::create($input);
+
+        //redirect ke halaman fakultas.index
+        return redirect()->route('fakultas.index');
+    } 
 
     /**
      * Display the specified resource.
