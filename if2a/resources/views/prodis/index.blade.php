@@ -1,7 +1,15 @@
+@extends('main')
+@section('title','Prodi')
+
+@section('content')
+    
+
+
+
 <h1>Data Prodi</h1>
 
 
-<table border="1" cellpadding = "10" >
+<table class="table table-bordered" >
     <tr>
         <th>No</th>
         <th>Nama Prodi</th>
@@ -20,3 +28,5 @@
         <td>{{ $prodi->fakultas->nama_fakultas ?? '-' }}</td>
     </tr>
 @endforeach
+</table>
+@endsection
