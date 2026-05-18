@@ -20,4 +20,4 @@ Route ::get('/about', function (){
 
 Route::resource('/fakultas', FakultasController::class);
 Route::resource('/periodes', PeriodeController::class);
-Route::get('/prodis', [ProdiController::class, 'index'])->name('prodis.index');
+Route::resource('prodis', ProdiController::class);

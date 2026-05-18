@@ -18,13 +18,13 @@ class ProdiController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Show the form for creating a new resource 
      */
     public function create()
     {
         $fakultas = fakultas::all();
         return view('prodis.create', compact('fakultas'));
-    }
+    } 
 
     /**
      * Store a newly created resource in storage.
@@ -32,10 +32,10 @@ class ProdiController extends Controller
     public function store(Request $request)
     {
         $input = $request->validate([
-            'nama_prodi' => 'required|string|max:255',
-            'singkatan' => 'required|string|max:10',
-            'Kaprodi' => 'required|string|max:255',
-            'fakultas_id' => 'required|exists:fakultas,id',
+            'nama_prodi' => 'required|unique:prodis',
+            'singkatan' => 'required',
+            'Kaprodi' => 'required',
+            'fakultas_id' => 'required'
         ]);
         //simpan ke tabel periode
         Prodi::create($input);
@@ -57,7 +57,8 @@ class ProdiController extends Controller
      */
     public function edit(Prodi $prodi)
     {
-        //
+        $fakultas = fakultas::all();
+        return view('prodis.edit', compact('prodi', 'fakultas'));
     }
 
     /**
@@ -65,7 +66,18 @@ class ProdiController extends Controller
      */
     public function update(Request $request, Prodi $prodi)
     {
-        //
+        $input = $request->validate([
+            'nama_prodi' => 'required|unique:prodis,nama_prodi,' . $prodi->id,
+            'singkatan' => 'required',
+            'Kaprodi' => 'required',
+            'fakultas_id' => 'required'
+        ]);
+
+        $prodi->update($input);
+        return redirect()->route('prodis.index');
+        
+
+
     }
 
     /**
@@ -73,6 +85,9 @@ class ProdiController extends Controller
      */
     public function destroy(Prodi $prodi)
     {
-        //
+        $prodi->delete();
+        return redirect()->route('prodis.index');
+
+
     }
 }

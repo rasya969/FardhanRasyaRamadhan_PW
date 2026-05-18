@@ -1,18 +1,19 @@
 @extends('main')
-@section('title','Prodi')
+@section('title','Program Studi')
 
 @section('content')
-    
-<h1>Data Prodi</h1>
-
+<a href="{{route('prodis.create')}}" class="btn btn-primary"> tambah Program Studi</a>
 
 <table class="table table-bordered" >
-    <tr>
+    <tr> 
         <th>No</th>
         <th>Nama Prodi</th>
         <th>Singkatan</th>
         <th>Kaprodi</th>
         <th>Fakultas</th>
+        <th>Singkatan Fakultas
+        </th>
+        <th>Aksi</th>
     </tr>
 
 
@@ -23,7 +24,21 @@
         <td>{{ $prodi->singkatan }}</td>
         <td>{{ $prodi->Kaprodi }}</td>
         <td>{{ $prodi->fakultas->nama_fakultas ?? '-' }}</td>
-    </tr>
+        <td>{{ $prodi->fakultas->singkatan ?? '-' }}</td>
+        <td>
+            <form method="POST" action="{{ route('prodis.destroy', $prodi->id) }}">
+                @csrf
+                <input name="_method" type="hidden" value="DELETE">
+                <button type="submit" class="btn btn-xs btn-danger btn-rounded show_confirm"
+                    data-toggle="tooltip" title='Delete'
+                    data-nama='{{ $prodi->nama_prodi }}'>Hapus</button>
+                </form>
+                
+                <a href="{{ route('prodis.edit', $prodi->id) }}" class="btn btn-xs btn-warning btn-rounded">Edit</a>
+                
+
+        </td>
+    </tr>               
 @endforeach
 </table>
 @endsection

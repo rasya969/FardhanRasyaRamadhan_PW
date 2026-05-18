@@ -1,14 +1,15 @@
 @extends('main')
 
-@section('title', 'Tambah prodi')
+@section('title', 'Edit prodi')
 
 @section('content')
-<form action="{{route('prodis.store')}}" method="POST">
+<form action="{{route('prodis.update', $prodi->id)}}" method="POST">
     @csrf
+    @method('PUT')
     <div class="mb-3">
         <label for="nama_prodi" class="form-label">Nama Prodi</label>
         <div class="form group" value="{{old('nama_prodi')}}">
-            <input type="text" class="form-control" id="nama_prodi" name="nama_prodi">
+            <input type="text" class="form-control" id="nama_prodi" name="nama_prodi" value="{{ old('nama_prodi', $prodi->nama_prodi) }}">
         </div>
     </div>
 
@@ -19,7 +20,7 @@
     <div class="mb-3">
         <label for="singkatan" class="form-label">Singkatan</label>
         <div class="form group" value="{{old('singkatan')}}">
-            <input type="text" class="form-control" id="singkatan" name="singkatan">
+            <input type="text" class="form-control" id="singkatan" name="singkatan" value="{{ old('singkatan', $prodi->singkatan) }}">
         </div>
     </div>
     @error('singkatan')
@@ -28,7 +29,7 @@
     <div class="mb-3">
         <label for="Kaprodi" class="form-label">Kaprodi</label>
         <div class="form group" value="{{old('Kaprodi')}}">
-            <input type="text" class="form-control" id="Kaprodi" name="Kaprodi">
+            <input type="text" class="form-control" id="Kaprodi" name="Kaprodi" value="{{ old('Kaprodi', $prodi->Kaprodi) }}">
         </div>
     </div>
     @error('Kaprodi')
@@ -40,7 +41,7 @@
             <select class="form-control" id="fakultas_id" name="fakultas_id">
                 <option value="">Pilih Fakultas</option>
                 @foreach ($fakultas as $row )
-                    <option value="{{ $row->id }}" {{ old('fakultas_id') == $row->id ? 'selected' : '' }}>
+                    <option value="{{ $row->id }}" {{ old('fakultas_id', $prodi->fakultas_id) == $row->id ? 'selected' : '' }}>
                         {{ $row->nama_fakultas }}
                     </option>
                 @endforeach

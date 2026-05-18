@@ -234,7 +234,7 @@
                   class="user-image rounded-circle shadow"
                   alt="User Image"
                 />
-                <span class="d-none d-md-inline">Alexander Pierce</span>
+                <span class="d-none d-md-inline">Fardhan Rasya Ramadhan</span>
               </a>
               <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-end">
                 <!--begin::User Image-->
@@ -245,8 +245,8 @@
                     alt="User Image"
                   />
                   <p>
-                    Alexander Pierce - Web Developer
-                    <small>Member since Nov. 2023</small>
+                    Fardhan Rasya Ramadhan - Web Developer
+                    <small>Member since Aug 1945</small>
                   </p>
                 </li>
                 <!--end::User Image-->
@@ -504,6 +504,27 @@
     </script>
     <!--end::OverlayScrollbars Configure-->
     <!--end::Script-->
+    <script src="https://code.jquery.com/jquery-4.0.0.min.js" integrity="sha256-OaVG6prZf4v69dPg6PhVattBXkcOWQB62pdZ3ORyrao=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
+<script type="text/javascript">
+    $('.show_confirm').click(function(event) {
+        var form = $(this).closest("form");
+        var nama = $(this).data("nama");
+        event.preventDefault();
+        swal({
+                title: `Apakah Anda yakin ingin menghapus data ${nama} ini?`,
+                text: "If you delete this, it will be gone forever.",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
+            .then((willDelete) => {
+                if (willDelete) {
+                    form.submit();
+                }
+            });
+    });
+</script>
   </body>
   <!--end::Body-->
 </html>
