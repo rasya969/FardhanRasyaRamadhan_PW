@@ -26,11 +26,10 @@
     <div class="text-danger">{{ $message }}</div>
     @enderror
     <div class="mb-3">
-        <label for="Kaprodi" class="form-label">Kaprodi</label>
-        <div class="form group" value="{{old('Kaprodi')}}">
-            <input type="text" class="form-control" id="Kaprodi" name="Kaprodi">
-        </div>
+    <label for="nama_prodi" class="form-label">Nama Prodi</label>
+    <div class="form-group"> <input type="text" class="form-control" id="nama_prodi" name="nama_prodi" value="{{ old('nama_prodi') }}">
     </div>
+</div>
     @error('Kaprodi')
     <div class="text-danger">{{ $message }}</div>
     @enderror
