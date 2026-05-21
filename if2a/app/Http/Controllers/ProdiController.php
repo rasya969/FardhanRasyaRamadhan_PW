@@ -64,16 +64,22 @@ class ProdiController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Prodi $prodi)
+    public function update(Request $request, $prodi)
     {
+        
+         // dd($request);
+        // validasi input
         $input = $request->validate([
-            'nama_prodi' => 'required|unique:prodis,nama_prodi,' . $prodi->id,
+            'nama_prodi' => 'required|unique:prodis,nama_prodi,' . $prodi,
             'singkatan' => 'required',
             'Kaprodi' => 'required',
             'fakultas_id' => 'required'
         ]);
 
-        $prodi->update($input);
+        // simpan data ke tabel prodi
+        Prodi::where('id', $prodi)->update($input);
+
+        // redirect ke route prodis.index
         return redirect()->route('prodis.index');
 
     }

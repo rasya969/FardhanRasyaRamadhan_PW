@@ -52,9 +52,9 @@ class PeriodeController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Periode $periode)
+    public function edit($periode)
     {
-       $periode = Periode::find($periode->id); // cari data berdasarkan id
+       $periode = Periode::find($periode); // cari data berdasarkan id
         //dd($fakultas);
         return view('periodes.edit', compact('periode')); // kirim data ke view
 
@@ -70,7 +70,7 @@ class PeriodeController extends Controller
             'semester' => 'required|string|max:10',
         ]);
 
-        $periode->update($input);
+        Periode::where('id', $periode->id)->update($input);
         return redirect()->route('periodes.index');
     }
 
