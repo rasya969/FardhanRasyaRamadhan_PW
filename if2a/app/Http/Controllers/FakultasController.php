@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\fakultas;
+use App\Models\Fakultas;
 use Illuminate\Http\Request;
 
 class FakultasController extends Controller
@@ -12,11 +12,10 @@ class FakultasController extends Controller
      */
     public function index()
     {
-        //akses tabel fakultas
-        $result =Fakultas::all(); // select * from fakultas
-       // dd($result); // dump data
-       return view('fakultas.index' , compact('result'));
-
+        // akses tabel Fakultas
+        $result = Fakultas::all(); // SELECT * FROM fakultas
+        // dd($result); // dump data 
+        return view('fakultas.index', compact('result')); // kirim data ke view
     }
 
     /**
@@ -26,29 +25,30 @@ class FakultasController extends Controller
     {
         return view('fakultas.create');
     }
-        
+
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
     {
-       // dd($request->all());    
-        //validasi input
+        // dd($request);
+        // validasi input
         $input = $request->validate([
-            'nama_fakultas' => 'required|string|max:255',
-            'singkatan' => 'required|string|max:10',
+            'nama_fakultas' => 'required|unique:fakultas',
+            'singkatan' => 'required'
         ]);
-        //simpan ke tabel fakultas
-        fakultas::create($input);
 
-        //redirect ke halaman fakultas.index
+        // simpan data ke tabel fakultas
+        Fakultas::create($input);
+
+        // redirect ke route fakultas.index
         return redirect()->route('fakultas.index');
-    } 
+    }
 
     /**
      * Display the specified resource.
      */
-    public function show(fakultas $fakultas)
+    public function show(Fakultas $fakultas)
     {
         //
     }
@@ -56,24 +56,42 @@ class FakultasController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(fakultas $fakultas)
+    public function edit($fakultas)
     {
-        //
+        $fakultas = Fakultas::find($fakultas); // cari data berdasarkan id
+        //dd($fakultas);
+        return view('fakultas.edit', compact('fakultas')); // kirim data ke view
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, fakultas $fakultas)
+    public function update(Request $request, $fakultas)
     {
-        //
+       
+         // dd($request);
+        // validasi input
+        $input = $request->validate([
+            'nama_fakultas' => 'required|unique:fakultas,nama_fakultas,' . $fakultas,
+            'singkatan' => 'required'
+        ]);
+
+        // simpan data ke tabel fakultas
+        Fakultas::where('id', $fakultas)->update($input);
+
+        // redirect ke route fakultas.index
+        return redirect()->route('fakultas.index');
+        
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(fakultas $fakultas)
+    public function destroy($fakultas) 
     {
-        //
+        // dd($fakultas);
+        $fakultas = Fakultas::find($fakultas, 'id'); // cari data berdasarkan id
+        $fakultas->delete(); // hapus data fakultas 
+        return redirect()->route('fakultas.index');
     }
 }

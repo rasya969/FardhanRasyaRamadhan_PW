@@ -75,8 +75,6 @@ class ProdiController extends Controller
 
         $prodi->update($input);
         return redirect()->route('prodis.index');
-        
-
 
     }
 

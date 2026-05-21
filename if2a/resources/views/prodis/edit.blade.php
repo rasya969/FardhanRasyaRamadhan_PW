@@ -1,9 +1,7 @@
 @extends('main')
-
 @section('title', 'Edit prodi')
-
 @section('content')
-<div class="card card-primary m-2 p-3">
+<div class="card card-primary m-2 p-3 ">
     <form action="{{ route('prodis.update', $prodi->id) }}" method="POST">
         @csrf
         @method('PUT')

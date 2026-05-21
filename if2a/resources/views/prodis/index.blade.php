@@ -4,7 +4,7 @@
 @section('content')
 <a href="{{route('prodis.create')}}" class="btn btn-primary"> tambah Program Studi</a>
 
-<table class="table table-bordered" >
+<table class="table table-sm" >
     <tr> 
         <th>No</th>
         <th>Nama Prodi</th>
@@ -26,7 +26,7 @@
         <td>{{ $prodi->fakultas->nama_fakultas ?? '-' }}</td>
         <td>{{ $prodi->fakultas->singkatan ?? '-' }}</td>
         <td>
-            <form method="POST" action="{{ route('prodis.destroy', $prodi->id) }}">
+            <form method="POST" action="{{ route('prodis.destroy', $prodi->id) }}" class="d-inline">
                 @csrf
                 <input name="_method" type="hidden" value="DELETE">
                 <button type="submit" class="btn btn-xs btn-danger btn-rounded show_confirm"
@@ -34,7 +34,7 @@
                     data-nama='{{ $prodi->nama_prodi }}'>Hapus</button>
                 </form>
                 
-                <a href="{{ route('prodis.edit', $prodi->id) }}" class="btn btn-xs btn-warning btn-rounded">Edit</a>
+                <a href="{{ route('prodis.edit', $prodi->id) }}" class="btn btn-xs btn-warning btn-rounded"  >Edit</a>
                 
 
         </td>
