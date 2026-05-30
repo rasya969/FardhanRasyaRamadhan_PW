@@ -3,7 +3,7 @@
 @section('title', 'Tambah Mahasiswa')
 
 @section('content')
-    <form action="{{ route('mahasiswas.store') }}" method="post">
+    <form action="{{ route('mahasiswas.store') }}" method="post" enctype="multipart/form-data">
         <div class="form-group">
             <label for="">Nama</label>
             <input type="text" name="nama" class="form-control" value="{{ old('nama') }}">

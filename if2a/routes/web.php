@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FakultasController;
 use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\PeriodeController;
@@ -23,3 +24,4 @@ Route::resource('/fakultas', FakultasController::class);
 Route::resource('/periodes', PeriodeController::class);
 Route::resource('prodis', ProdiController::class);
 Route::resource('mahasiswas', MahasiswaController::class);
+Route::get('/dashboard', [DashboardController::class, 'index']);

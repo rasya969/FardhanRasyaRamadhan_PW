@@ -36,7 +36,7 @@ class MahasiswaController extends Controller
         //validasi input
         $input = $request->validate([
             'npm' => 'required|unique:mahasiswas',
-            'nama_mahasiswa' => 'required',
+            'nama' => 'required',
             'prodi_id' => 'required|exists:prodis,id',
             'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ]);
@@ -46,7 +46,7 @@ class MahasiswaController extends Controller
             $nama_foto = time() . '_' . $foto->getClientOriginalName();
             $foto->storeAs('fotos', $nama_foto, 'public');
         } else {
-            $input['foto'] = null;
+            $nama_foto = null;
         }
         $input['foto'] = $nama_foto; // tambahkan nama foto ke input
         //simpan ke tabel mahasiswa
