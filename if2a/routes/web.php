@@ -6,22 +6,35 @@ use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\PeriodeController;
 use App\Http\Controllers\ProdiController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProfileController;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route ::get('/tentang', function (){
-    return view(' tentang ');
+Route::get('/tentang', function (){
+    return view('tentang');
 });
 
-Route ::get('/about', function (){
-    return view(' tentang ');
+Route::resource('/fakultas',FakultasController::class);
+Route::resource('/periodes',PeriodeController::class);
+Route::resource('/prodis', ProdiController::class);
+Route::resource('/mahasiswas', MahasiswaController::class);
+
+// Route::get('/dashboard',[DashboardController::class,'index']);
+
+Route::get('/main',function(){
+    return view('main');
 });
 
+Route::get('/dashboard', [DashboardController::class, 'index'])
+    ->middleware(['auth', 'verified'])
+    ->name('dashboard');
 
-Route::resource('/fakultas', FakultasController::class);
-Route::resource('/periodes', PeriodeController::class);
-Route::resource('prodis', ProdiController::class);
-Route::resource('mahasiswas', MahasiswaController::class);
-Route::get('/dashboard', [DashboardController::class, 'index']);
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+require __DIR__.'/auth.php';
