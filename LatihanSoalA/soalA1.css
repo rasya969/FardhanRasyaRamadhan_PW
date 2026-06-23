@@ -1,0 +1,118 @@
+*{
+  box-sizing:border-box;
+}
+
+/* HP (default) */
+body{
+  font-family:Arial;
+  margin:0;
+  color:rgb(212, 6, 6);
+  background:white;
+  transition:0.5s;
+}
+
+/* HEADER */
+.header{
+  background:#072b35;
+  padding:15px 20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.header h2{
+  margin:0;
+  color:red;
+}
+
+.top-right-text{
+  padding:6px 12px;
+  border-radius:6px;
+  color:white;
+  font-size:14px;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.top-right-text:hover{
+  background:#1b7ca8;
+}
+
+/* BANNER */
+.banner img{
+  width:100%;
+  height:350px;
+  object-fit:cover;
+}
+
+/* CONTENT */
+.container{
+  padding:20px;
+}
+
+img{
+  width:100%;
+  border-radius:8px;
+}
+
+.p-5{
+  padding:10px;
+}
+
+.row{
+  clear:both;
+}
+
+/* FORM */
+input, textarea{
+  width:100%;
+  padding:10px;
+  margin:5px 0;
+  border-radius:5px;
+  border:none;
+}
+
+button{
+  background:#2da8e0;
+  border:none;
+  padding:10px;
+  width:100%;
+  border-radius:5px;
+  color:blue;
+}
+
+/* TABLET */
+@media screen and (min-width:601px){
+
+  body{
+    background:green;
+  }
+
+  .col-md-50{
+    width:50%;
+    float:left;
+  }
+
+  .col-md-100{
+    width:100%;
+    float:left;
+  }
+}
+
+/* DESKTOP */
+@media screen and (min-width:992px){
+
+  body{
+    background:blue;
+  }
+
+  .col-lg-25{
+    width:25%;
+    float:left;
+  }
+
+  .col-lg-50{
+    width:50%;
+    float:left;
+  }
+}
